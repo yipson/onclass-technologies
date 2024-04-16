@@ -1,4 +1,4 @@
-package com.pragma.onclass.technologies.domain.model;
+package com.pragma.onclass.technologies.domain.model.dto;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -9,7 +9,7 @@ import lombok.Setter;
 @NoArgsConstructor
 @Getter
 @Setter
-public class Technology {
+public class TechnologyDto {
     private Long id;
     private String name;
     private String description;
