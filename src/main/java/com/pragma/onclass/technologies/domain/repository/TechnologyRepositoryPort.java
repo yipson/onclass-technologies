@@ -1,7 +1,7 @@
-package com.pragma.onclass.technologies.domain.port;
+package com.pragma.onclass.technologies.domain.repository;
 
 import com.pragma.onclass.technologies.domain.model.Technology;
 
-public interface TechnologyPersistencePort {
+public interface TechnologyRepositoryPort {
     Technology save(Technology technology);
 }

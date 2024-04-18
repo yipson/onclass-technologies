@@ -1,8 +1,8 @@
-package com.pragma.onclass.technologies.application.mapper;
+package com.pragma.onclass.technologies.adapter.driving.rest.mapper;
 
+import com.pragma.onclass.technologies.adapter.driving.rest.model.TechnologyDto;
+import com.pragma.onclass.technologies.adapter.driving.rest.model.request.TechnologyRq;
 import com.pragma.onclass.technologies.domain.model.Technology;
-import com.pragma.onclass.technologies.domain.model.dto.TechnologyDto;
-import com.pragma.onclass.technologies.domain.model.request.TechnologyRq;
 import org.mapstruct.Mapper;
 import org.mapstruct.factory.Mappers;
 

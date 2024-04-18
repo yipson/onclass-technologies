@@ -1,4 +1,4 @@
-package com.pragma.onclass.technologies.domain.model.request;
+package com.pragma.onclass.technologies.adapter.driving.rest.model.request;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
