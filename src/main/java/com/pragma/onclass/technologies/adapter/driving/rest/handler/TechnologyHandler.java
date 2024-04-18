@@ -1,8 +1,10 @@
 package com.pragma.onclass.technologies.adapter.driving.rest.handler;
 
+import com.pragma.onclass.technologies.domain.model.Technology;
 import com.pragma.onclass.technologies.domain.usecase.port.TechnologyPort;
 import com.pragma.onclass.technologies.adapter.driving.rest.model.TechnologyDto;
 import com.pragma.onclass.technologies.adapter.driving.rest.model.request.TechnologyRq;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
 import org.springframework.stereotype.Component;
 import org.springframework.web.reactive.function.server.ServerRequest;
@@ -24,7 +26,7 @@ public class TechnologyHandler {
                 .flatMap(technologyRq -> {
                     return ServerResponse.ok()
                            .contentType(MediaType.APPLICATION_JSON)
-                           .body(technologyPort.create(technologyRq), TechnologyDto.class);
+                           .body("technologyPort.create(technologyRq)", TechnologyDto.class);
                 });
 
     }

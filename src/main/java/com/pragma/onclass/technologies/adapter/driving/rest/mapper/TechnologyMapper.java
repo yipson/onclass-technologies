@@ -5,8 +5,9 @@ import com.pragma.onclass.technologies.adapter.driving.rest.model.request.Techno
 import com.pragma.onclass.technologies.domain.model.Technology;
 import org.mapstruct.Mapper;
 import org.mapstruct.factory.Mappers;
+import org.springframework.stereotype.Component;
 
-@Mapper
+@Mapper(componentModel = "spring")
 public interface TechnologyMapper {
     TechnologyMapper INSTANCE = Mappers.getMapper(TechnologyMapper.class);
 
