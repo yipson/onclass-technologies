@@ -1,0 +1,8 @@
+spring:
+  application:
+  name: onclass-technologies
+
+  r2dbc:
+    username: onclass
+    password: onclass7y6t
+    url: r2dbc:postgresql://localhost:5432/db-onclass-technology
