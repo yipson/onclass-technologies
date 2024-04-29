@@ -5,6 +5,8 @@ import com.pragma.onclass.technologies.adapter.mapper.TechnologyMapper;
 import com.pragma.onclass.technologies.domain.model.Technology;
 import com.pragma.onclass.technologies.domain.repository.TechnologyRepositoryPort;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 import reactor.core.publisher.Flux;
@@ -37,9 +39,10 @@ public class TechnologyJpaAdapter implements TechnologyRepositoryPort {
     }
 
     @Override
-    public Flux<Technology> findAllSortByNameOrdered(Boolean isAscending) {
+    public Flux<Technology> findAllSortByNameOrdered(Boolean isAscending, int page) {
         Sort sort =isAscending ? Sort.by("name").ascending() : Sort.by("name").descending();
-        Flux<TechnologyEntity> technologiesEntity = technologyRepository.findAll(sort);
+        Pageable pageable = PageRequest.of(page, 5, sort);
+        Flux<TechnologyEntity> technologiesEntity = technologyRepository.findAllBy(pageable);
         return technologyMapper.entitiesToDomains(technologiesEntity);
     }
 }

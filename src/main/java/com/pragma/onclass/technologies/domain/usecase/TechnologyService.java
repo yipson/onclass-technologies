@@ -24,7 +24,7 @@ public class TechnologyService implements TechnologyPort {
     }
 
     @Override
-    public Flux<Technology> getTechnologies(Boolean isAscending) {
-        return technologyRepositoryPort.findAllSortByNameOrdered(isAscending);
+    public Flux<Technology> getTechnologies(Boolean isAscending, int page) {
+        return technologyRepositoryPort.findAllSortByNameOrdered(isAscending, page);
     }
 }

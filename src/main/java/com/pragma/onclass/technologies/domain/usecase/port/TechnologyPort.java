@@ -6,5 +6,5 @@ import reactor.core.publisher.Mono;
 
 public interface TechnologyPort {
     Mono<Technology> create(Technology technology);
-    Flux<Technology> getTechnologies(Boolean isAscending);
+    Flux<Technology> getTechnologies(Boolean isAscending, int page);
 }

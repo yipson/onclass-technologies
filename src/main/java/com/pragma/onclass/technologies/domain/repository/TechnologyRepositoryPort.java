@@ -6,5 +6,5 @@ import reactor.core.publisher.Mono;
 
 public interface TechnologyRepositoryPort {
     Mono<Technology> save(Technology technology);
-    Flux<Technology> findAllSortByNameOrdered(Boolean isAscending);
+    Flux<Technology> findAllSortByNameOrdered(Boolean isAscending, int page);
 }
