@@ -2,11 +2,13 @@ package com.pragma.onclass.technologies.adapter.driving.rest.handler;
 
 import com.pragma.onclass.technologies.adapter.driving.rest.model.request.TechnologyRq;
 import com.pragma.onclass.technologies.adapter.mapper.TechnologyMapper;
+import com.pragma.onclass.technologies.domain.model.Technology;
 import com.pragma.onclass.technologies.domain.usecase.port.TechnologyPort;
 import org.springframework.http.MediaType;
 import org.springframework.stereotype.Component;
 import org.springframework.web.reactive.function.server.ServerRequest;
 import org.springframework.web.reactive.function.server.ServerResponse;
+import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;
 
 @Component
@@ -28,6 +30,15 @@ public class TechnologyHandler {
                                 .contentType(MediaType.APPLICATION_JSON)
                                 .bodyValue(response))
                 );
+    }
 
+    public Mono<ServerResponse> getTechnologies(ServerRequest request) {
+        int page = Integer.parseInt(request.queryParam("page").orElse("0")) - 1 ;
+        if(page < 0) page = 0;
+        Boolean isAscending = Boolean.valueOf(request.queryParam("is-ascending").orElse("true"));
+        Flux<Technology> technologies = technologyPort.getTechnologies(isAscending, page);
+        return ServerResponse.ok()
+                .contentType(MediaType.APPLICATION_JSON)
+                .body(technologies, Technology.class);
     }
 }

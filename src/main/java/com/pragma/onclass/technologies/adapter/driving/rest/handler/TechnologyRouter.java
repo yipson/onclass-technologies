@@ -13,6 +13,7 @@ public class TechnologyRouter {
     @Bean
     public RouterFunction<ServerResponse> routes(TechnologyHandler technologyHandler) {
         return RouterFunctions
-                .route(RequestPredicates.POST("/v1/technology"), technologyHandler::createTechnology);
+                .route(RequestPredicates.POST("/v1/technology"), technologyHandler::createTechnology)
+                .andRoute(RequestPredicates.GET("/v1/technology"), technologyHandler::getTechnologies);
     }
 }
