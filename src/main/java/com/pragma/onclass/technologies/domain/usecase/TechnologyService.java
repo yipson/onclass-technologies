@@ -6,6 +6,7 @@ import com.pragma.onclass.technologies.domain.repository.TechnologyRepositoryPor
 import com.pragma.onclass.technologies.domain.usecase.port.TechnologyPort;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;
 
 @Service
@@ -21,5 +22,10 @@ public class TechnologyService implements TechnologyPort {
     @Override
     public Mono<Technology> create(Technology technology) {
         return technologyRepositoryPort.save(technology);
+    }
+
+    @Override
+    public Flux<Technology> getTechnologies() {
+        return technologyRepositoryPort.findAll();
     }
 }

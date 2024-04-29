@@ -6,6 +6,7 @@ import com.pragma.onclass.technologies.domain.model.Technology;
 import com.pragma.onclass.technologies.domain.repository.TechnologyRepositoryPort;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;
 
 @Service
@@ -32,5 +33,10 @@ public class TechnologyJpaAdapter implements TechnologyRepositoryPort {
                     .description(technologyEntity.getDescription())
                     .build()
         );
+    }
+
+    public Flux<Technology> findAll() {
+        Flux<TechnologyEntity> technologiesEntity = technologyRepository.findAll();
+        return technologyMapper.entitiesToDomains(technologiesEntity);
     }
 }
