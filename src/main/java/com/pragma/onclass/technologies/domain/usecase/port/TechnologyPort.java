@@ -1,7 +1,8 @@
 package com.pragma.onclass.technologies.domain.usecase.port;
 
 import com.pragma.onclass.technologies.domain.model.Technology;
+import reactor.core.publisher.Mono;
 
 public interface TechnologyPort {
-    Technology create(Technology technologyRq);
+    Mono<Technology> create(Technology technology);
 }
