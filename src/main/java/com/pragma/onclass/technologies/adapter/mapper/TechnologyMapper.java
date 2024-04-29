@@ -16,9 +16,11 @@ public interface TechnologyMapper {
 
     @Mapping(source = "name", target = "name")
     @Mapping(source = "description", target = "description")
+    @Mapping(target = "id", ignore = true)
     Technology rqToDomain(TechnologyRq request);
 
     @Mapping(source = "name", target = "name")
     @Mapping(source = "description", target = "description")
+    @Mapping(target = "id", ignore = true)
     TechnologyEntity domainToEntity(Technology domain);
 }
