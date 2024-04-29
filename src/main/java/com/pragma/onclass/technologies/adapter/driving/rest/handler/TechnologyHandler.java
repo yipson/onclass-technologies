@@ -33,9 +33,8 @@ public class TechnologyHandler {
     }
 
     public Mono<ServerResponse> getTechnologies(ServerRequest request) {
-
-        Flux<Technology> technologies = technologyPort.getTechnologies();
-
+        Boolean isAscending = Boolean.valueOf(request.queryParam("is-ascending").orElse("true"));
+        Flux<Technology> technologies = technologyPort.getTechnologies(isAscending);
         return ServerResponse.ok()
                 .contentType(MediaType.APPLICATION_JSON)
                 .body(technologies, Technology.class);
