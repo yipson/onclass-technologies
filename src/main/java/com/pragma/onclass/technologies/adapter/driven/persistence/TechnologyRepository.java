@@ -10,5 +10,7 @@ import reactor.core.publisher.Mono;
 @Repository
 public interface TechnologyRepository extends R2dbcRepository<TechnologyEntity, Long> {
     Mono<TechnologyEntity> save(TechnologyEntity technologyEntityToSave);
+    Mono<Boolean> existsByName(String name);
     Flux<TechnologyEntity> findAllBy(Pageable pageable);
+
 }

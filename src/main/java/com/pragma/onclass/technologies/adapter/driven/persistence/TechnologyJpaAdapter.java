@@ -38,6 +38,10 @@ public class TechnologyJpaAdapter implements TechnologyRepositoryPort {
         );
     }
 
+    public Mono<Boolean> existByName(String name) {
+        return technologyRepository.existsByName(name);
+    }
+
     @Override
     public Flux<Technology> findAllSortByNameOrdered(Boolean isAscending, int page) {
         Sort sort =isAscending ? Sort.by("name").ascending() : Sort.by("name").descending();
