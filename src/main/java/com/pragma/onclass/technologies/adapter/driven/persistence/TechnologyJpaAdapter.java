@@ -33,4 +33,9 @@ public class TechnologyJpaAdapter implements TechnologyRepositoryPort {
                     .build()
         );
     }
+
+    @Override
+    public Mono<Boolean> existByName(String name) {
+        return technologyRepository.existsByName(name);
+    }
 }

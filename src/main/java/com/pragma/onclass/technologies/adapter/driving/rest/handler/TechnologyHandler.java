@@ -3,6 +3,7 @@ package com.pragma.onclass.technologies.adapter.driving.rest.handler;
 import com.pragma.onclass.technologies.adapter.driving.rest.model.request.TechnologyRq;
 import com.pragma.onclass.technologies.adapter.mapper.TechnologyMapper;
 import com.pragma.onclass.technologies.domain.usecase.port.TechnologyPort;
+import com.pragma.onclass.technologies.utils.TechnologyCreationException;
 import org.springframework.http.MediaType;
 import org.springframework.stereotype.Component;
 import org.springframework.web.reactive.function.server.ServerRequest;
@@ -27,6 +28,10 @@ public class TechnologyHandler {
                         .flatMap(response -> ServerResponse.ok()
                                 .contentType(MediaType.APPLICATION_JSON)
                                 .bodyValue(response))
+                        .onErrorResume(TechnologyCreationException.class, ex ->
+                                ServerResponse.badRequest()
+                                        .contentType(MediaType.APPLICATION_JSON)
+                                        .bodyValue(ex.getMessage()))
                 );
 
     }
